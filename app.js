@@ -13,9 +13,22 @@ Formulario.addEventListener("submit", (e) => {
         </div> `;
 });
 
-function eliminar (e){
-    e.parentElement.remove();
+function eliminar(e) {
+  let aidi = e.parentElement.querySelector("p:nth-child(1)").textContent;
+  let proc = aidi.split(": ")[1];
+  console.log(proc);
+  e.parentElement.remove();
 }
-function editar (e){
-
+function editar(e) {
+  if (e.value == "Editar") {
+    const parrafo = e.parentElement.querySelector("p:nth-child(2)");
+    parrafo.contentEditable = true;
+    e.value = "Guardar";
+    if (parrafo.contentEditable) {
+      parrafo.contentEditable = false;
+    }
+    if (e.value == "Guardar") {
+      e.value = "Editar";
+    }
+  }
 }
