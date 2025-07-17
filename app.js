@@ -20,15 +20,13 @@ function eliminar(e) {
   e.parentElement.remove();
 }
 function editar(e) {
-  if (e.value == "Editar") {
-    const parrafo = e.parentElement.querySelector("p:nth-child(2)");
+  const parrafo = e.parentElement.querySelector("p:nth-child(2)");
+  if (e.textContent == "Editar") {
     parrafo.contentEditable = true;
-    e.value = "Guardar";
-    if (parrafo.contentEditable) {
-      parrafo.contentEditable = false;
-    }
-    if (e.value == "Guardar") {
-      e.value = "Editar";
-    }
+    parrafo.focus();
+    e.textContent = "Guardar";
+  } else {
+    parrafo.contentEditable = false;
+    e.textContent = "Editar";
   }
 }
